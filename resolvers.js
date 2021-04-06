@@ -10,5 +10,16 @@ module.exports = {
         EUROPA: 'Europa',
         SOL: 'Sol',
         SATURN: 'Saturn'
+    },
+    SessionOrError: {
+        //Method call by apollo to resolve the type
+        __resolveType(obj){
+            if(obj.code){
+                return 'Error'
+            }
+            else{
+                return 'Session'
+            }
+        }
     }
-};
+}
