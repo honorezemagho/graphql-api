@@ -9,7 +9,7 @@ type Query {
     description: String,
     startsAt:String,
     endsAt: String,
-    room: String,
+    room: Room,
     day:String,
     format:String,
     track:String,
@@ -35,6 +35,11 @@ type Session {
     speakers: [Speaker]
 }
 
+enum Room {
+    EUROPA
+    SOL
+    SATURN
+}
 type Mutation{
     toggleFavoriteSession(id:ID): Session,
     addNewSession(session: SessionInput): Session
@@ -52,7 +57,7 @@ input SessionInput {
     description: String
     startsAt:String
     endsAt: String
-    room: String
+    room: Room
     day:String
     format:String
     track:String
