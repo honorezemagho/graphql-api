@@ -25,6 +25,20 @@ class SessionAPI extends DataSource{
         session[0].favorite = !session[0].favorite;
         return session[0];
     }
+
+     generateId = function() {
+        return (((1+Math.random())*0x10000)|0);
+     }
+
+    async addSession(session)
+    {
+        session.id = await this.generateId();
+        console.log(session.id);
+        sessions.push(session);
+        return session;
+        
+    }
+
 }
 
 module.exports = SessionAPI;
