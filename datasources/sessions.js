@@ -33,7 +33,6 @@ class SessionAPI extends DataSource{
     async addSession(session)
     {
         session.id = await this.generateId();
-        console.log(session.id);
         sessions.push(session);
         return session;
         
