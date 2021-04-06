@@ -4,7 +4,8 @@ const SessionAPI = require('./datasources/sessions');
 const typeDefs = gql`
 
 type Query {
-    sessions: [Session]
+    sessions: [Session],
+    sessionById(id:ID): Session 
 }
 
 type Session {
@@ -22,13 +23,16 @@ type Session {
 `;
 
 const dataSources = () => ({
-    sessionAPI : new SessionAPI()
+    sessionAPI : new SessionAPI(),
 });
 
 const resolvers = {
     Query:  {
         sessions: (parent,args, {dataSources},info) => {
             return dataSources.sessionAPI.getSessions();
+        },
+        sessionById: (parent,{id},{dataSources},info) => {
+            return dataSources.sessionAPI.getSessionsById(id);
         }
     }
 }
