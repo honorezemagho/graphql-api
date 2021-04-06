@@ -36,7 +36,8 @@ type Session {
 }
 
 type Mutation{
-    toggleFavoriteSession(id:ID): Session
+    toggleFavoriteSession(id:ID): Session,
+    addNewSession(session: SessionInput): Session
 }
 
 type Speaker{
@@ -44,5 +45,18 @@ type Speaker{
     name:String,
     bio: String,
     sessions:[Session]
+}
+
+input SessionInput {
+    title: String!
+    description: String
+    startsAt:String
+    endsAt: String
+    room: String
+    day:String
+    format:String
+    track:String
+    level:String
+    favorite: String
 }
 `;
