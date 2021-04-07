@@ -20,6 +20,10 @@ formatError: err => {
     return new ApolloError("We are having some trouble", "ERROR", {token: "uniquetoken"});
   }
   return err;
+},
+engine: {
+  graphVariant: 'current',
+  reportSchema: true
 }});
 
 server
